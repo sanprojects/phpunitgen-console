@@ -33,11 +33,22 @@ class TargetResolver implements TargetResolverContract
         $this->filesystem = $filesystem;
     }
 
+    public function getTestFileName($sourcePath): string
+    {
+        $path =  preg_replace('#/modules/(.+?)/#', '/modules/$1/Tests/', $sourcePath);
+
+        return Str::replaceLast('.php', 'Test.php', $path);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function resolve(ClassFactory $classFactory, string $sourcePath, string $targetPath): string
     {
+        if (true) {
+            return $this->getTestFileName($sourcePath);
+        }
+
         if ($targetPath === 'tests' && $classFactory->getTestSubNamespace() !== '') {
             $targetPath .= '/'.str_replace('\\', '/', $classFactory->getTestSubNamespace());
         }
