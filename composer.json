@@ -1,5 +1,5 @@
 {
-  "name": "phpunitgen/console",
+  "name": "sanprojects/phpunitgen-console",
   "description": "The PhpUnitGen command line features for tests generation.",
   "license": "MIT",
   "type": "library",
